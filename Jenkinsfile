@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        COMPOSE = "docker compose"
+        COMPOSE = "docker-compose"
     }
 
     stages {
@@ -18,13 +18,13 @@ pipeline {
             }
         }
 
-        stage('Deploy containers') {
+        stage('Up') {
             steps {
                 sh "${COMPOSE} up -d"
             }
         }
 
-        stage('Run tests') {
+        stage('Tests') {
             steps {
                 sh "bash tests/test_services.sh"
             }
@@ -33,7 +33,6 @@ pipeline {
 
     post {
         always {
-            echo "Cleaning up containers..."
             sh "${COMPOSE} down"
         }
     }
