@@ -2,7 +2,13 @@ FROM golang:1.21-alpine
 
 WORKDIR /app
 
-COPY main.go .
+# Copiar go.mod y go.sum primero (si existe), para cachear dependencias.
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+# Ahora sí copiamos el código
+COPY . .
 
 RUN go build -o service1
 
