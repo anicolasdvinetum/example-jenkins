@@ -3,7 +3,7 @@ FROM golang:1.21-alpine
 WORKDIR /app
 
 # Copiar go.mod y go.sum primero (si existe), para cachear dependencias.
-COPY go.mod go.sum ./
+COPY go.mod ./
 
 RUN go mod download
 
