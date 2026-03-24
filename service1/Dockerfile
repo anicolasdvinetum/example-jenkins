@@ -12,6 +12,6 @@ COPY . .
 
 RUN go build -o service1
 
-EXPOSE 8080
+EXPOSE 9090
 
 CMD ["./service1"]
