@@ -5,7 +5,7 @@ services:
     ports:
       - "9090:9090"
     networks:
-      - jenkins-net
+      - jenkins_docker_jenkins-net
 
   python-service:
     build: ./service2
@@ -13,10 +13,8 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - jenkins-net
-
-
+      - jenkins_docker_jenkins-net
 
 networks:
-  jenkins-net:
+  jenkins_docker_jenkins-net:
     external: true
